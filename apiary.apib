@@ -176,6 +176,72 @@ loginTicket=XXX&courseId=XXXX&bulType=1
 </ArrayOfBulletinData>
 
 -- Documents --
+Get document list
+
+* docType=1: Handout
+* docType=2: Reference
+POST /GetMaterialDocList
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXX&courseId=XXXX&docType=1
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMaterialDocData 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/">
+    <MaterialDocData>
+        <UnitStatus>1</UnitStatus>
+        <UnitName />
+        <DisplayName>Title</DisplayName>
+        <TreeNodeId>XXXXX</TreeNodeId>
+        <DocOrder>2</DocOrder>
+        <UnitOrder>99999</UnitOrder>
+        <BeginDate>2013/06/20</BeginDate>
+        <EndDate>2014/02/28</EndDate>
+        <CourseBeginDate>2013/06/20</CourseBeginDate>
+        <CourseEndDate>2014/02/28</CourseEndDate>
+        <IsViewGuest>false</IsViewGuest>
+        <DocumentId>XXXXXX</DocumentId>
+        <LibaryDocumentId>XXXX</LibaryDocumentId>
+        <ParentTreeNodeId>XXXX</ParentTreeNodeId>
+        <OpenState>2</OpenState>
+        <Summary />
+        <CourseName />
+        <mServiceBaseUrl>http://140.113.8.80/mService</mServiceBaseUrl>
+        <CourseId>XXXX</CourseId>
+    </MaterialDocData>
+</ArrayOfMaterialDocData>
+
+Get Attachment File List
+
+* resId: DocumentId from Document List
+* metaType: Unknown, set to 10
+POST /GetAttachFileList
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXX&resId=DocumentID&metaType=10&courseId=XXXX
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttachFileInfoData 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/">
+    <AttachFileInfoData>
+        <MediaCategory>2</MediaCategory>
+        <AttachMediaId>XXXXX</AttachMediaId>
+        <ContentMediaId>XXXXX</ContentMediaId>
+        <DisplayFileName>FileName</DisplayFileName>
+        <RealityFileName>Link</RealityFileName>
+        <MimeType>application/pdf</MimeType>
+        <FileSize>263814</FileSize>
+        <Description />
+        <CreateTime>2013/09/15 08:41:50</CreateTime>
+        <SourceAttachId />
+        <IsViewGuest>0</IsViewGuest>
+    </AttachFileInfoData>
+</ArrayOfAttachFileInfoData>
+
 -- Assignments --
 -- Discussion --
 -- E-Mail --
