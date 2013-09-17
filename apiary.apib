@@ -243,7 +243,80 @@ loginTicket=XXX&resId=DocumentID&metaType=10&courseId=XXXX
 </ArrayOfAttachFileInfoData>
 
 -- Assignments --
+Get Assignment List
+
+* listType=1:待繳
+* listType=2:互評
+* listType=3:過期
+* listType=4:已繳
+POST /GetAttachFileList
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXXX&courseId=XXXX&accountId=XXXX&listType=1
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfHomeworkData 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/" />
+
 -- Discussion --
 -- E-Mail --
 -- Score --
 -- Members --
+Get Member List
+
+* role=tea:老師/助教
+* role=stu:旁聽生
+* role=ta:學生
+POST /GetMemberList
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXXX&courseId=XXXX&role=tea
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAccountData 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/">
+    <AccountData>
+        <LoginTicket />
+        <AccountId>XXX</AccountId>
+        <DepartId>XXX</DepartId>
+        <AccountStatus xsi:nil="true" />
+        <Account>XXX</Account>
+        <Sex xsi:nil="true" />
+        <Name>XXXX</Name>
+        <EMail>aaa@gmail.com</EMail>
+        <PersonalId />
+        <OfficeTitle />
+        <Class />
+        <Tel>(無)</Tel>
+        <MSNAccount />
+        <Mobile />
+        <ZipCode />
+        <Address />
+        <Url />
+        <Password />
+        <CmsSrvId />
+        <IsGraduation xsi:nil="true" />
+        <StudentRole xsi:nil="true" />
+        <Degree xsi:nil="true" />
+        <TakenSemester xsi:nil="true" />
+        <StudentYear xsi:nil="true" />
+        <IsInThisSchool xsi:nil="true" />
+        <SmtpServer />
+        <SmtpPort xsi:nil="true" />
+        <SmtpNeedLogin xsi:nil="true" />
+        <SmtpAccount />
+        <SmtpPassword />
+        <SpecAccount />
+        <CheckEMail xsi:nil="true" />
+        <OfficeLab />
+        <NickName />
+        <Introduce />
+        <PhotoOpenStatus xsi:nil="true" />
+        <UserRole>mtea</UserRole>
+        <RoleName>&amp;nbsp;(主開課教師)</RoleName>
+    </AccountData>
+</ArrayOfAccountData>
