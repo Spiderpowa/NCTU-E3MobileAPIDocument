@@ -1,0 +1,126 @@
+HOST: http://e3.nctu.edu.tw/mService/service.asmx
+
+--- E3 Mobile API ---
+---
+* You must obtain **LoginTicket** (and some require **AccountID**) using *Login* API
+* Content-Type of all request must be *application/x-www-form-urlencoded*
+* Content-Type of all response is *text/xml; charset=utf-8*
+---
+
+-- Login --
+Login
+POST /Login
+> Content-Type: application/x-www-form-urlencoded
+account=0123456&password=Password1
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<AccountData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mService.e3.nctu.edu.tw/">
+  <LoginTicket>xxxxxxxx</LoginTicket>
+  <AccountId>xxxxxxx</AccountId>
+  <DepartId>xxxxxxxx</DepartId>
+  <AccountStatus>1</AccountStatus>
+  <Account>0123456</Account>
+  <Sex>1</Sex>
+  <Name>OOO</Name>
+  <EMail>aaa@gmail.com</EMail>
+  <PersonalId>A123456789</PersonalId>
+  <OfficeTitle>XXXX</OfficeTitle>
+  <Class>*</Class>
+  <Tel>0912345678</Tel>
+  <MSNAccount />
+  <Mobile />
+  <ZipCode />
+  <Address />
+  <Url />
+  <Password>XXXXX</Password>
+  <CmsSrvId>XXX</CmsSrvId>
+  <IsGraduation>true</IsGraduation>
+  <StudentRole>0</StudentRole>
+  <Degree>2</Degree>
+  <TakenSemester>1</TakenSemester>
+  <StudentYear>0</StudentYear>
+  <IsInThisSchool>true</IsInThisSchool>
+  <SmtpServer>m-smtp.nctu.edu.tw</SmtpServer>
+  <SmtpPort>25</SmtpPort>
+  <SmtpNeedLogin>false</SmtpNeedLogin>
+  <SmtpAccount />
+  <SmtpPassword />
+  <SpecAccount />
+  <CheckEMail>true</CheckEMail>
+  <OfficeLab />
+  <NickName />
+  <Introduce />
+  <PhotoOpenStatus>false</PhotoOpenStatus>
+  <UserRole />
+  <RoleName />
+</AccountData>
+
+--
+Course
+Course related API
+--
+Get course list
+POST /GetCourseList
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXX&accountId=XXX&role=stu
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCourseData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://mService.e3.nctu.edu.tw/">
+  <CourseData>
+    <CourseId>XXX</CourseId>
+    <PmtCrsNo>XXX1111</PmtCrsNo>
+    <CourseNo>0000</CourseNo>
+    <CourseName>OOOO</CourseName>
+    <CrsYear>102</CrsYear>
+    <CrsSemester>上</CrsSemester>
+    <TeacherName>AAA</TeacherName>
+    <ForumEnable>false</ForumEnable>
+    <OldCourse>false</OldCourse>
+    <UserRole>stu</UserRole>
+    <PositionStatus>0</PositionStatus>
+  </CourseData>
+  <CourseData>
+    <CourseId>XXX2</CourseId>
+    <PmtCrsNo>XXX1111</PmtCrsNo>
+    <CourseNo>0000</CourseNo>
+    <CourseName>OOOO</CourseName>
+    <CrsYear>102</CrsYear>
+    <CrsSemester>上</CrsSemester>
+    <TeacherName>AAA</TeacherName>
+    <ForumEnable>false</ForumEnable>
+    <OldCourse>false</OldCourse>
+    <UserRole>stu</UserRole>
+    <PositionStatus>0</PositionStatus>
+  </CourseData>
+</ArrayOfCourseData>
+
+Get course time
+
+Sample course on 1EF at ED000
+POST /GetCourseTime
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXX&courseId=XXXX
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCourseTimeData 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/">
+    <CourseTimeData>
+        <CourseId>XXXX</CourseId>
+        <WeekDay>1</WeekDay>
+        <Section>E</Section>
+        <RoomNo>ED000       </RoomNo>
+        <CourseName>OOOO</CourseName>
+    </CourseTimeData>
+    <CourseTimeData>
+        <CourseId>XXXX</CourseId>
+        <WeekDay>1</WeekDay>
+        <Section>F</Section>
+        <RoomNo>ED116       </RoomNo>
+        <CourseName>OOOO</CourseName>
+    </CourseTimeData>
+</ArrayOfCourseTimeData>
