@@ -60,6 +60,25 @@ account=0123456&password=Password1
 Course
 Course related API
 --
+
+Get personal basic information
+POST /GetPersonalCoursePosition
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXX&accountId=XXX
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCoursePositionStatus 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/">
+    <CoursePositionStatus>
+        <CrsYear>102</CrsYear>
+        <CrsSemester>1</CrsSemester>
+        <Role>修課生</Role>
+    </CoursePositionStatus>
+</ArrayOfCoursePositionStatus>
+
 Get course list
 POST /GetCourseList
 > Content-Type: application/x-www-form-urlencoded
@@ -124,3 +143,33 @@ loginTicket=XXX&courseId=XXXX
         <CourseName>OOOO</CourseName>
     </CourseTimeData>
 </ArrayOfCourseTimeData>
+
+Get announcement
+
+* bulType=1: Latest announcement
+* bulType=2: Old announcement
+POST /GetStuAnnouncementList
+> Content-Type: application/x-www-form-urlencoded
+loginTicket=XXX&courseId=XXXX&bulType=1
+< 200
+< Content-Type: text/xml; charset=utf-8
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBulletinData 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://mService.e3.nctu.edu.tw/">
+    <BulletinData>
+        <BulletinId>XXXX</BulletinId>
+        <CourseId>XXXX</CourseId>
+        <BulType>1</BulType>
+        <Caption>Title</Caption>
+        <Content>Content</Content>
+        <BeginDate>2013/08/20</BeginDate>
+        <EndDate>2014/01/17</EndDate>
+        <NotifyType>2</NotifyType>
+        <NeedVote>0</NeedVote>
+        <ExpiredStatus>0</ExpiredStatus>
+        <CourseName />
+        <AttatchFileName />
+    </BulletinData>
+</ArrayOfBulletinData>
